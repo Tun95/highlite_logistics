@@ -15,3 +15,8 @@ npm install
 # 4. Start the development server
 npm run dev
 ```
+## 🔗 Links
+
+- **GitHub Link**: https://github.com/Tun95/highlite_logistics
+- **Admin Demo Link**: https://adminhighlitelogs.netlify.app
+- **Client Demo Link**: https://highlitelogs.netlify.app

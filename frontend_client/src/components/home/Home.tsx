@@ -7,6 +7,7 @@ import Loading from "../../common/loading/Loading";
 import ErrorMessage from "../../common/error/ErrorMessage";
 import { formatNumber, formatTime } from "../../utils/Formatter";
 
+// Remove the addon filters (sort, market cap, price etc)
 function Home() {
   const [cryptos, setCryptos] = useState<CryptoAsset[]>([]);
   const [filteredCryptos, setFilteredCryptos] = useState<CryptoAsset[]>([]);
@@ -174,7 +175,7 @@ function Home() {
 
         {/* Sticky Controls Section */}
         <div className="mb-10">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-6 sticky top-4 z-10">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-6 sticky top-0 z-10">
             {/* Search and Filter Row */}
             <div className="flex flex-col md:flex-row gap-4 mb-6">
               {/* Search Input */}
