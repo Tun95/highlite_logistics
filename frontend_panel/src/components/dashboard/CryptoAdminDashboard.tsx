@@ -206,7 +206,7 @@ function CryptoAdminDashboard() {
           <div className="px-4 sm:px-6 lg:px-8 py-6 mx-auto max-w-7xl">
             {/* Header */}
             <div className="mb-8">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex flex-col flex-wrap sm:flex-row sm:items-center justify-between gap-4">
                 <div>
                   <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">
                     Crypto Dashboard
@@ -231,7 +231,7 @@ function CryptoAdminDashboard() {
                     </span>
                   </p>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex flex-wrap items-center gap-3">
                   <div
                     className={`px-4 py-2 rounded-full text-sm font-medium ${getSentimentColor(dashboardData.market_sentiment.sentiment)}`}
                   >
@@ -281,7 +281,7 @@ function CryptoAdminDashboard() {
             </div>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div className="grid max-480px:grid-cols-1 max-1200px:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
               {/* Total Market Cap */}
               <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg border border-gray-200 dark:border-gray-700 hover:shadow-xl transition-all duration-200 hover:-translate-y-1">
                 <div className="flex items-center justify-between mb-4">
@@ -927,7 +927,7 @@ function CryptoAdminDashboard() {
               </div>
             )}
 
-            {/* Footer */}
+            {/* Footer
             <div className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
               <div className="text-center">
                 <p className="text-gray-600 dark:text-gray-400">
@@ -938,7 +938,7 @@ function CryptoAdminDashboard() {
                   {new Date().getFullYear()}
                 </p>
               </div>
-            </div>
+            </div> */}
           </div>
         </>
       )}
