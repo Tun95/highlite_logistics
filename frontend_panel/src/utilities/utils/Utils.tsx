@@ -26,6 +26,15 @@ export const formatTime = (dateString: string): string => {
   });
 };
 
+// Format date
+export const formatDate = (date: Date): string => {
+  return date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+};
+
 // Format relative time
 export const formatRelativeTime = (dateString: string): string => {
   const date = new Date(dateString);

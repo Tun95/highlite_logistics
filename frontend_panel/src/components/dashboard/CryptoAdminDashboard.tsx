@@ -33,7 +33,6 @@ import {
   LineChart as RechartsLineChart,
   Line,
 } from "recharts";
-import { cryptoAdminService } from "../../services/crypto-admin.service";
 import {
   CryptoDashboardResponse,
   RecentActivity,
@@ -50,6 +49,7 @@ import {
   getSentimentColor,
 } from "../../utilities/utils/Utils";
 import LoadingErrorWrapper from "../../common/error/LoadingErrorWrapper";
+import { cryptoDashboardService } from "../../services/cryptoDashboardService";
 
 // Quick Action Type
 interface QuickAction {
@@ -78,7 +78,7 @@ function CryptoAdminDashboard() {
     try {
       setLoading(true);
       setError(null);
-      const response = await cryptoAdminService.getDashboardData();
+      const response = await cryptoDashboardService.getDashboardData();
 
       if (response.status === "success") {
         setDashboardData(response.data);

@@ -24,8 +24,8 @@ const Sidebar = ({ onClose, mobileVersion = false }: SidebarProps) => {
     },
     {
       icon: Handshake,
-      label: "Consultations",
-      path: "/consultations",
+      label: "Crypto",
+      path: "/crypto",
     },
   ];
 

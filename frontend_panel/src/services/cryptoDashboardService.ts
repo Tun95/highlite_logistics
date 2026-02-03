@@ -1,4 +1,4 @@
-// services/crypto-admin.service.ts
+// services/cryptoDashboardService.ts
 import axios, { AxiosError } from "axios";
 import {
   CryptoDashboardResponse,
@@ -12,7 +12,7 @@ import {
 const API_BASE_URL =
   import.meta.env.VITE_API_URL || "https://api.coingecko.com/api/v3";
 
-class CryptoAdminService {
+class CryptoDashboardService {
   private api = axios.create({
     baseURL: API_BASE_URL,
     timeout: 30000,
@@ -336,4 +336,4 @@ class CryptoAdminService {
   }
 }
 
-export const cryptoAdminService = new CryptoAdminService();
+export const cryptoDashboardService = new CryptoDashboardService();

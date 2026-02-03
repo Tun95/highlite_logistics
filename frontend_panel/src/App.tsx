@@ -3,10 +3,11 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "sonner";
 
-import ErrorBoundary from "./utilities/error boundary/ErrorBoundary";
-import DashboardScreen from "./screens/dashboardscreen/HomeScreen";
-// import ConsultationScreen from "./screens/consultationscreen/ConsultationScreen";
 import Loading from "./utilities/global loadingmsg/loading/Loading";
+import ErrorBoundary from "./utilities/error boundary/ErrorBoundary";
+
+import DashboardScreen from "./screens/dashboardscreen/DashboardScreen";
+import CryptoListScreen from "./screens/cryptolistscreen/CryptoListScreen";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -35,7 +36,7 @@ function App() {
         {/* Admin Routes */}
         <Route path="/" element={<DashboardScreen />} />
 
-        {/* <Route path="/consultations" element={<ConsultationScreen />} /> */}
+        <Route path="/crypto" element={<CryptoListScreen />} />
       </Routes>
     </div>
   );

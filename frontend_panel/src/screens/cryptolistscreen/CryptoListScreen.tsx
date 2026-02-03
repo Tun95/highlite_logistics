@@ -1,9 +1,9 @@
 import { Helmet } from "react-helmet-async";
 import Sidebar from "../../common/sidebar/Sidebar";
 import Navbar from "../../common/navbar/Navbar";
-import CryptoAdminDashboard from "../../components/crypto/CryptoAdminDashboard";
+import CryptoList from "../../components/crypto/CryptoList";
 
-function DashboardScreen() {
+function CryptoListScreen() {
   return (
     <div>
       <Helmet>
@@ -19,7 +19,7 @@ function DashboardScreen() {
         <div className="flex-1 flex flex-col min-w-0">
           <Navbar />
           <main className="px-2 flex-1 max-480px:p-0">
-            <CryptoAdminDashboard />
+            <CryptoList />
           </main>
         </div>
       </div>
@@ -27,4 +27,4 @@ function DashboardScreen() {
   );
 }
 
-export default DashboardScreen;
+export default CryptoListScreen;

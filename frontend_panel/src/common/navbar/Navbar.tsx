@@ -155,7 +155,7 @@ function Navbar() {
                       Dashboard
                     </NavLink>
                     <NavLink
-                      to="/consultations"
+                      to="/crypto"
                       className={({ isActive }) =>
                         `flex items-center px-3 py-2 text-sm text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md transition-colors ${
                           isActive ? "bg-gray-100 dark:bg-gray-700" : ""
@@ -163,7 +163,7 @@ function Navbar() {
                       }
                       onClick={() => setShowProfileDropdown(false)}
                     >
-                      Consultations
+                      Crypto
                     </NavLink>
 
                     <div className="border-t border-gray-200 dark:border-gray-600 my-1"></div>
