@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-bg: #f3f5f9;
+  --color-border: #e7e8eb;
+  --color-light-border: #d1d5db;
+  --color-background: #f6f9fc;
+  --color-light-light-gray: #f6f6f6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.app {
+  font-family: "Satoshi", sans-serif;
+}
