@@ -6,13 +6,13 @@ import ErrorBoundary from "./utils/error boundary/ErrorBoundary";
 
 function App() {
   return (
-    <div className="app">
+    <>
       <Routes>
         <Route path="*" element={<ErrorBoundary />} />
         {/* Admin Routes */}
         <Route path="/" element={<HomeScreen />} />
       </Routes>
-    </div>
+    </>
   );
 }
 

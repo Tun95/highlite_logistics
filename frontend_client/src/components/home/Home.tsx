@@ -1,31 +1,18 @@
 import { useState, useEffect, useCallback } from "react";
 import CryptoCard from "../crypto/CryptoCard";
-import {
-  Search,
-  // Filter,
-  RefreshCw,
-  TrendingUp,
-  BarChart3,
-  DollarSign,
-  // ArrowUpDown,
-} from "lucide-react";
+import { Search, RefreshCw, TrendingUp, BarChart3, DollarSign } from "lucide-react";
 import { cryptoService } from "../../services/crypto.service";
 import { CryptoAsset } from "../../types/crypto/crypto.types";
 import Loading from "../../common/loading/Loading";
 import ErrorMessage from "../../common/error/ErrorMessage";
 import { formatNumber, formatTime } from "../../utils/Formatter";
 
-// Remove the addon filters (sort, market cap, price etc)
 function Home() {
   const [cryptos, setCryptos] = useState<CryptoAsset[]>([]);
   const [filteredCryptos, setFilteredCryptos] = useState<CryptoAsset[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
-  // const [sortBy, setSortBy] = useState<
-  //   "market_cap" | "price" | "name" | "24h_change"
-  // >("market_cap");
-  // const [sortOrder, setSortOrder] = useState<"asc" | "desc">("desc");
   const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
   const [stats, setStats] = useState({
     totalMarketCap: 0,
@@ -76,7 +63,7 @@ function Home() {
     fetchCryptoData();
   }, [fetchCryptoData]);
 
-  // Filter and sort cryptos
+  // Filter cryptos
   useEffect(() => {
     let result = [...cryptos];
 
@@ -89,38 +76,8 @@ function Home() {
       );
     }
 
-    // Apply sorting
-    // result.sort((a, b) => {
-    //   let comparison = 0;
-    //   switch (sortBy) {
-    //     case "market_cap":
-    //       comparison = a.market_cap - b.market_cap;
-    //       break;
-    //     case "price":
-    //       comparison = a.current_price - b.current_price;
-    //       break;
-    //     case "name":
-    //       comparison = a.name.localeCompare(b.name);
-    //       break;
-    //     case "24h_change":
-    //       comparison =
-    //         a.price_change_percentage_24h - b.price_change_percentage_24h;
-    //       break;
-    //   }
-    //   return sortOrder === "desc" ? -comparison : comparison;
-    // });
-
     setFilteredCryptos(result);
   }, [cryptos, searchTerm]);
-
-  // const handleSort = (field: typeof sortBy) => {
-  //   if (sortBy === field) {
-  //     setSortOrder(sortOrder === "desc" ? "asc" : "desc");
-  //   } else {
-  //     setSortBy(field);
-  //     setSortOrder("desc");
-  //   }
-  // };
 
   if (loading && !error) {
     return <Loading />;
@@ -215,9 +172,9 @@ function Home() {
           </div>
         </div>
 
-        {/* Controls Section */}
+        {/* Sticky Controls Section */}
         <div className="mb-10">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg border border-gray-200 dark:border-gray-700 p-6 sticky top-4 z-10">
             {/* Search and Filter Row */}
             <div className="flex flex-col md:flex-row gap-4 mb-6">
               {/* Search Input */}
@@ -233,46 +190,6 @@ function Home() {
                   />
                 </div>
               </div>
-
-              {/* Sort Buttons */}
-              {/* <div className="flex flex-wrap gap-2">
-                <button
-                  onClick={() => handleSort("market_cap")}
-                  className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-all duration-300 ${
-                    sortBy === "market_cap"
-                      ? "bg-accent-500 text-white"
-                      : "bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800"
-                  }`}
-                >
-                  <Filter className="w-4 h-4" />
-                  Market Cap
-                  <ArrowUpDown className="w-3 h-3" />
-                </button>
-                <button
-                  onClick={() => handleSort("price")}
-                  className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-all duration-300 ${
-                    sortBy === "price"
-                      ? "bg-accent-500 text-white"
-                      : "bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800"
-                  }`}
-                >
-                  <DollarSign className="w-4 h-4" />
-                  Price
-                  <ArrowUpDown className="w-3 h-3" />
-                </button>
-                <button
-                  onClick={() => handleSort("24h_change")}
-                  className={`px-4 py-2 rounded-lg flex items-center gap-2 transition-all duration-300 ${
-                    sortBy === "24h_change"
-                      ? "bg-accent-500 text-white"
-                      : "bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800"
-                  }`}
-                >
-                  <TrendingUp className="w-4 h-4" />
-                  24h Change
-                  <ArrowUpDown className="w-3 h-3" />
-                </button>
-              </div> */}
             </div>
 
             {/* Action Row */}
@@ -305,10 +222,6 @@ function Home() {
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
                   Cryptocurrencies
                 </h2>
-                {/* <span className="text-sm text-gray-500 dark:text-gray-400">
-                  Sorted by {sortBy.replace("_", " ")} (
-                  {sortOrder === "desc" ? "descending" : "ascending"})
-                </span> */}
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                 {filteredCryptos.map((crypto, index) => (
