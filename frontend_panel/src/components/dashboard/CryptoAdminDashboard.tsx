@@ -50,6 +50,7 @@ import {
 } from "../../utilities/utils/Utils";
 import LoadingErrorWrapper from "../../common/error/LoadingErrorWrapper";
 import { cryptoDashboardService } from "../../services/cryptoDashboardService";
+import { useTheme } from "../../custom hooks/Hooks";
 
 // Quick Action Type
 interface QuickAction {
@@ -64,6 +65,8 @@ interface QuickAction {
 
 function CryptoAdminDashboard() {
   const navigate = useNavigate();
+  const { theme } = useTheme(); 
+
   const [dashboardData, setDashboardData] = useState<
     CryptoDashboardResponse["data"] | null
   >(null);
@@ -443,14 +446,24 @@ function CryptoAdminDashboard() {
                     >
                       <CartesianGrid
                         strokeDasharray="3 3"
-                        stroke="#e5e7eb"
+                        stroke={theme === "dark" ? "#374151" : "#e5e7eb"}
                         strokeOpacity={0.5}
                       />
-                      <XAxis dataKey="date" stroke="#6b7280" fontSize={12} />
+                      <XAxis
+                        dataKey="date"
+                        stroke={theme === "dark" ? "#9ca3af" : "#6b7280"}
+                        fontSize={12}
+                        tick={{
+                          fill: theme === "dark" ? "#9ca3af" : "#6b7280",
+                        }}
+                      />
                       <YAxis
-                        stroke="#6b7280"
+                        stroke={theme === "dark" ? "#9ca3af" : "#6b7280"}
                         fontSize={12}
                         tickFormatter={(value) => `$${value}M`}
+                        tick={{
+                          fill: theme === "dark" ? "#9ca3af" : "#6b7280",
+                        }}
                       />
                       <Tooltip
                         formatter={(value) => [
@@ -458,9 +471,22 @@ function CryptoAdminDashboard() {
                           "Market Cap",
                         ]}
                         contentStyle={{
-                          backgroundColor: "#ffffff",
-                          borderColor: "#e5e7eb",
+                          backgroundColor:
+                            theme === "dark" ? "#1f2937" : "#ffffff",
+                          borderColor: theme === "dark" ? "#374151" : "#e5e7eb",
                           borderRadius: "0.5rem",
+                          color: theme === "dark" ? "#f9fafb" : "#111827",
+                          boxShadow:
+                            "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+                          padding: "12px 16px",
+                          borderWidth: "1px",
+                        }}
+                        labelStyle={{
+                          color: theme === "dark" ? "#f9fafb" : "#111827",
+                          fontWeight: "600",
+                        }}
+                        itemStyle={{
+                          color: theme === "dark" ? "#f9fafb" : "#111827",
                         }}
                       />
                       <Area
@@ -468,10 +494,30 @@ function CryptoAdminDashboard() {
                         dataKey="market_cap"
                         name="Market Cap (M)"
                         stroke="#3b82f6"
-                        fill="#3b82f6"
-                        fillOpacity={0.1}
+                        fill="url(#marketCapGradient)"
+                        fillOpacity={0.2}
                         strokeWidth={2}
                       />
+                      <defs>
+                        <linearGradient
+                          id="marketCapGradient"
+                          x1="0"
+                          y1="0"
+                          x2="0"
+                          y2="1"
+                        >
+                          <stop
+                            offset="5%"
+                            stopColor="#3b82f6"
+                            stopOpacity={0.4}
+                          />
+                          <stop
+                            offset="95%"
+                            stopColor="#3b82f6"
+                            stopOpacity={0.1}
+                          />
+                        </linearGradient>
+                      </defs>
                     </AreaChart>
                   </ResponsiveContainer>
                 </div>
@@ -506,22 +552,35 @@ function CryptoAdminDashboard() {
                     >
                       <CartesianGrid
                         strokeDasharray="3 3"
-                        stroke="#e5e7eb"
+                        stroke={theme === "dark" ? "#374151" : "#e5e7eb"}
                         strokeOpacity={0.5}
                       />
-                      <XAxis dataKey="date" stroke="#6b7280" fontSize={12} />
+                      <XAxis
+                        dataKey="date"
+                        stroke={theme === "dark" ? "#9ca3af" : "#6b7280"}
+                        fontSize={12}
+                        tick={{
+                          fill: theme === "dark" ? "#9ca3af" : "#6b7280",
+                        }}
+                      />
                       <YAxis
                         yAxisId="left"
-                        stroke="#6b7280"
+                        stroke={theme === "dark" ? "#9ca3af" : "#6b7280"}
                         fontSize={12}
                         tickFormatter={(value) => `$${value}`}
+                        tick={{
+                          fill: theme === "dark" ? "#9ca3af" : "#6b7280",
+                        }}
                       />
                       <YAxis
                         yAxisId="right"
                         orientation="right"
-                        stroke="#6b7280"
+                        stroke={theme === "dark" ? "#9ca3af" : "#6b7280"}
                         fontSize={12}
                         tickFormatter={(value) => `${value}K`}
+                        tick={{
+                          fill: theme === "dark" ? "#9ca3af" : "#6b7280",
+                        }}
                       />
                       <Tooltip
                         formatter={(value, name) => [
@@ -531,9 +590,22 @@ function CryptoAdminDashboard() {
                           name === "price" ? "Price" : "Volume",
                         ]}
                         contentStyle={{
-                          backgroundColor: "#ffffff",
-                          borderColor: "#e5e7eb",
+                          backgroundColor:
+                            theme === "dark" ? "#1f2937" : "#ffffff",
+                          borderColor: theme === "dark" ? "#374151" : "#e5e7eb",
                           borderRadius: "0.5rem",
+                          color: theme === "dark" ? "#f9fafb" : "#111827",
+                          boxShadow:
+                            "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+                          padding: "12px 16px",
+                          borderWidth: "1px",
+                        }}
+                        labelStyle={{
+                          color: theme === "dark" ? "#f9fafb" : "#111827",
+                          fontWeight: "600",
+                        }}
+                        itemStyle={{
+                          color: theme === "dark" ? "#f9fafb" : "#111827",
                         }}
                       />
                       <Line
