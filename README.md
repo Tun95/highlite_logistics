@@ -15,8 +15,3 @@ npm install
 # 4. Start the development server
 npm run dev
 ```
-
-
-# 📌 Project Submission – Practice Summary Card Component
-
----
