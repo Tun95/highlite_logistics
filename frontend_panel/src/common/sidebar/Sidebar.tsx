@@ -1,6 +1,6 @@
 // components/sidebar/Sidebar.tsx
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { LayoutDashboard, Handshake, LogOut } from "lucide-react";
+import { LayoutDashboard, LogOut, Bitcoin } from "lucide-react";
 import { toast } from "sonner";
 import { useTheme } from "../../custom hooks/Hooks";
 import logo from "../../assets/logo.png";
@@ -23,7 +23,7 @@ const Sidebar = ({ onClose, mobileVersion = false }: SidebarProps) => {
       path: "/",
     },
     {
-      icon: Handshake,
+      icon: Bitcoin,
       label: "Crypto",
       path: "/crypto",
     },
